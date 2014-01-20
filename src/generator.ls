@@ -16,4 +16,4 @@ swapper-generator = (c) ->
     re.gex.test string
   return fn
 
-module.exports = swapper
+module.exports = swapper-generator
