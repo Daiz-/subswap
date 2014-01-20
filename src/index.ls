@@ -43,13 +43,13 @@ bits = (n, m) ->
 # swapper functions to apply in this iteration, eg.
 #
 # [*,/] (the swap functions)
-# [0,0] -> skip  *, skip  /
-# [0,1] -> skip  *, apply /
-# [1,0] -> apply *, skip  /
-# [1,1] -> apply *, apply /
+# [0,0] -> skip  *, skip  /, index   '', lang 'eng'
+# [0,1] -> skip  *, apply /, index  '/', lang 'mah'
+# [1,0] -> apply *, skip  /, index  '*', lang 'enm'
+# [1,1] -> apply *, apply /, index '*/', lang 'map'
 #
 # We also construct an index string of the swaps performed
-# in this iteration, which we then use to look up the
+# in the iteration, which we then use to look up the
 # language tag of the result from swap-table.
 #
 # Finally, we return an object containing all the
