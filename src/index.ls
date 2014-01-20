@@ -3,6 +3,8 @@ require! {
   swap-table: './table'
 }
 
+pad = (n, m = 2) -> \0 * (m - (""+n).length) + n
+
 swap = (script, re) !->
   for line in script.events
     if line.style.match /^Default|^Alternative|^Top/
@@ -12,13 +14,14 @@ swap = (script, re) !->
         t = '{\\q2}' + t
       line.text = t
 
-bits = (n) ->
-  for i in n.to-string 2
+bits = (n, m) ->
+  for i in pad (n.to-string 2), m
     parse-int i, 10
 
 subswap = (script, key) ->
   ret = {}
   char = key.split ''
+  klen = key.length
   swappers = []
   len = 2 ^ char.length
   
@@ -27,14 +30,14 @@ subswap = (script, key) ->
 
   for l from 0 til len
     cur = script.clone!
-    k = bits l .reverse!
+    k = bits l, klen
     index = ''
     for j from 0 til k.length
       if k[j] then
         swap cur, swappers[j]
         index += char[j]
     lang = swap-table[index]
-    ret[lang.code] = {desc: lang.desc, script: cur}
+    ret[lang] = cur
 
   return ret
 
