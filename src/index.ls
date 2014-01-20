@@ -34,7 +34,7 @@ subswap = (script, key) ->
         swap cur, swappers[j]
         index += char[j]
     lang = swap-table[index]
-    ret[code] = {desc: lang.desc, script: cur}
+    ret[lang.code] = {desc: lang.desc, script: cur}
 
   return ret
 
