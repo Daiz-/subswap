@@ -5,14 +5,17 @@ require! {
 
 pad = (n, m = 2) -> \0 * (m - (""+n).length) + n
 
-swap = (script, re) !->
+swap = (script, re, styles) !->
   for line in script.events
-    if line.style.match /^Default|^Alternative|^Top/
-      t = line.text
-      t = re t
-      if (re.test t) and !(t.match /^{\\q2}/) then
-        t = '{\\q2}' + t
-      line.text = t
+    cont = true
+    if line.style.match /^Default|^Alternative|^Top/ then cont = false
+    if styles and line.style.match styles then cont = false
+    if cont then continue
+    t = line.text
+    t = re t
+    if (re.test t) and !(t.match /^{\\q2}/) then
+      t = '{\\q2}' + t
+    line.text = t
 
 bits = (n, m) ->
   for i in pad (n.to-string 2), m
@@ -55,7 +58,7 @@ bits = (n, m) ->
 # Finally, we return an object containing all the
 # swap-modified scripts under their language keys.
 
-subswap = (script, key) ->
+subswap = (script, key, styles) ->
   ret = {}
   char = key.split ''
   klen = key.length
@@ -71,7 +74,7 @@ subswap = (script, key) ->
     index = ''
     for j from 0 til k.length
       if k[j] then
-        swap cur, swappers[j]
+        swap cur, swappers[j], styles
         index += char[j]
     lang = swap-table[index]
     ret[lang] = cur
