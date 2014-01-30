@@ -1,6 +1,6 @@
 {
   "name": "subswap",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Generate sub tracks from master subtitle file via swaps",
   "author": "Daiz <taneli.vatanen@gmail.com>",
   "license": "MIT",
