@@ -8,6 +8,8 @@ pad = (n, m = 2) -> \0 * (m - (""+n).length) + n
 swap = (script, re, styles) !->
   for line in script.events
     cont = true
+    if re.swap line.effect
+      line.comment = !line.comment
     if line.style.match /^Default|^Alternative|^Top/ then cont = false
     if styles and line.style.match styles then cont = false
     if cont then continue
