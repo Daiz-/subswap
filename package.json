@@ -11,7 +11,7 @@
     "shelljs": "~0.2.6"
   },
   "scripts": {
-    "postinstall": "lsc make"
+    "prepublish": "lsc make"
   },
   "repository": {
     "type": "git",
