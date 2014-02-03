@@ -6,6 +6,7 @@ swapper-generator = (c) ->
     fn2: (m, a) -> "{#c}#a{#c}"
     gex3: new RegExp "{\\#c}{\\#c" \g
     fn3: -> "{#c#c"
+    gex4: new RegExp "\\#c{3}"
     gex: new RegExp "{\\#c" "g"
   fn = (string) ->
     return string
@@ -14,6 +15,8 @@ swapper-generator = (c) ->
       .replace re.gex3, re.fn3
   fn.test = (string) ->
     re.gex.test string
+  fn.swap = (string) ->
+    re.gex4.test string
   return fn
 
 module.exports = swapper-generator
