@@ -5,11 +5,11 @@
   "author": "Daiz <taneli.vatanen@gmail.com>",
   "license": "MIT",
   "main": "./lib/index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "LiveScript": "~1.2.0",
     "shelljs": "~0.2.6"
   },
-  "devDependencies": {},
   "scripts": {
     "postinstall": "lsc make"
   },
