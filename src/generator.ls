@@ -6,7 +6,7 @@ swapper-generator = (c) ->
     fn2: (m, a) -> "{#c}#a{#c}"
     gex3: new RegExp "{\\#c}{\\#c" \g
     fn3: -> "{#c#c"
-    gex4: new RegExp "\\#c{3}"
+    gex4: new RegExp "^\\#c{3}$"
     gex: new RegExp "{\\#c" "g"
   fn = (string) ->
     return string
